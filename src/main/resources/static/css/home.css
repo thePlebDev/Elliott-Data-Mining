@@ -1,0 +1,80 @@
+.header{
+box-shadow: 0 1px 3px rgb(0 0 0 / 10%),
+0 2px 2px rgb(0 0 0 / 6%), 0 0 2px rgb(0 0 0 / 7%);
+height:90px;
+width:100%;
+display:flex;
+align-items:center;
+padding:10px;
+justify-content:space-between;
+font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+
+}
+.linkContainer{
+   display:flex;
+   width:180px;
+   justify-content:space-around;
+
+}
+.headerTitle{
+    display:none;
+    cursor:pointer;
+}
+.titleSmall{
+    cursor:pointer;
+    display:block;
+    letter-spacing:1.5px;
+    font-size:30px;
+}
+@media only screen and (min-width: 600px) {
+  .headerTitle{
+    display:block;
+  }
+  .titleSmall{
+  display:none;
+  }
+}
+.home-image{
+height:89.3vh;
+width:100%;
+}
+.title-container{
+
+    position:absolute;
+    color:white
+    width:200px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top:40%;
+    text-align: center;
+}
+.title-container-font{
+    color:white;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+.title-subcontainer{
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    color:white;
+    font-size:23px;
+    padding:20px;
+    width:80%;
+    margin:0 auto;
+    display:flex;
+    justify-content:space-around;
+}
+.h3-title{
+    border:1px solid white;
+    color:white;
+    padding:4px 18px;
+    border-radius:8px;
+    cursor:pointer;
+}
+@media only screen and (max-width: 600px) {
+  .title-subcontainer{
+      width:50%;
+  }
+}

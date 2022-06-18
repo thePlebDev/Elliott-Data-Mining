@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Elliott Data Mining</title>
+    <meta name="description" content="Make a 25 USD donation to the Rural Data Mining Collective today " />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/donate.css" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="/javascript/checkout.js" defer></script>
+</head>
+
+<body class="body">
+
+<!-- Display a payment form -->
+<form id="payment-form">
+    <h1 class="loadingText" id="loadingTexts">Loading! Please wait...</h1>
+    <h1 class="title" id="donateTitle">Rural Data Mining</h1>
+    <p>Make a one time donation of $25 USD to help our efforts today</p>
+
+    <div id="payment-element">
+        <!--Stripe.js injects the Payment Element-->
+    </div>
+    <button id="submit">
+        <div class="spinner hidden" id="spinner"></div>
+        <span id="button-text">Pay now</span>
+    </button>
+    <div id="payment-message" class="hidden"></div>
+</form>
+</body>
+</html>
