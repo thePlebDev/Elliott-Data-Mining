@@ -1,10 +1,14 @@
 package com.example.EDMWebsite.Security;
 
+import com.example.EDMWebsite.Models.Authority;
 import com.example.EDMWebsite.Models.User;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class SecurityUser implements UserDetails {
     private User user;
@@ -15,7 +19,12 @@ public class SecurityUser implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+
+        List<GrantedAuthority> authorities = user.getAuthorities()
+                .stream()
+                .map(a -> new SimpleGrantedAuthority(a.getName()))
+                .collect(Collectors.toList());
+        return authorities;
     }
 
     @Override
