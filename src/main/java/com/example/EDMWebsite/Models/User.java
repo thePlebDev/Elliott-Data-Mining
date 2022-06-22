@@ -1,6 +1,7 @@
 package com.example.EDMWebsite.Models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,14 +14,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(unique = true)
     private String username;
 
     @Column
     private String password;
 
     @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
-    private List<Authority> authorities;
+    private List<Authority> authorities = new ArrayList<>();
 
     /**
      * Hibernate requires a constructor with no arguments for every persistent class
@@ -41,6 +42,7 @@ public class User {
     public String getPassword(){
         return this.password;
     }
+    public List<Authority> getAuthorities(){return this.authorities;}
     public Long getId(){
         return this.id;
     }
@@ -52,4 +54,5 @@ public class User {
     public void setPassword(String password){
         this.password = password;
     }
+    public void setAuthorities(Authority authorities){this.authorities.add(authorities);}
 }
