@@ -4,6 +4,7 @@ import com.stripe.Stripe;
 import com.stripe.param.PaymentIntentCreateParams;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HomeController {
@@ -15,7 +16,6 @@ public class HomeController {
 
     @GetMapping("/donate")
     public String setupStripe(){
-
         return "donate";
     }
     @GetMapping("/about")
@@ -26,5 +26,10 @@ public class HomeController {
     @GetMapping("/checkout")
     public String successfulDonation(){
         return "checkout";
+    }
+
+    @PostMapping("/signup")
+    public String signup(){
+        return "signup";
     }
 }
