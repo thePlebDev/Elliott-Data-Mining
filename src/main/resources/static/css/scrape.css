@@ -1,0 +1,12 @@
+.scrape-container{
+    border:2px solid red;
+    width:80%;
+    margin:0 auto;
+    text-align:center;
+
+}
+.scrape-title{
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+
+}
