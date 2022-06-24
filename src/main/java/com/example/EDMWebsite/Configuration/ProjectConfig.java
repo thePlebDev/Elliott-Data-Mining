@@ -15,6 +15,7 @@ import org.springframework.security.web.csrf.CsrfFilter;
 @Configuration
 public class ProjectConfig{
 
+
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder(){
         return new BCryptPasswordEncoder();
@@ -36,6 +37,7 @@ public class ProjectConfig{
                           .mvcMatchers("/profile").authenticated()
                           .anyRequest().permitAll();
         http.csrf(c-> c.ignoringAntMatchers("/signup"));
+        http.authenticationProvider( authenticationProvider());
 
 
         return http.build();
