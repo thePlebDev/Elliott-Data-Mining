@@ -31,23 +31,12 @@ public class ProjectConfig{
 
     @Bean//TODO:Change the management of CSRF tokens when scaling(pg 258 Spring Security in Action)
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-//        http.httpBasic();
-//        http.csrf().disable();
-//        http.authorizeRequests()
-//                .anyRequest()
-//                .permitAll();
-        http.addFilterAfter(new CSRFTokenLogger(), CsrfFilter.class)
-                .authorizeRequests()
-                .anyRequest().permitAll();
+          http.formLogin();
+          http.authorizeRequests()
+                          .mvcMatchers("/profile").authenticated()
+                          .anyRequest().permitAll();
         http.csrf(c-> c.ignoringAntMatchers("/signup"));
-//                .mvcMatchers("/blog-post/1").authenticated()
-//                .mvcMatchers("/blog-post/2").authenticated()
-//                .mvcMatchers("/").permitAll()
-//                .and()
-//                .formLogin()
-//                .permitAll()
-//                .and()
-//                .logout().permitAll();
+
 
         return http.build();
     }

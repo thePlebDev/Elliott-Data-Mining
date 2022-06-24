@@ -19,7 +19,7 @@ public class TestUserRepository {
     public void findByUsernameTest(){
         //GIVEN
         String EXPECTED_USERNAME = "BOB";
-        User user = new User(EXPECTED_USERNAME,"fdsa4");
+        User user = new User(EXPECTED_USERNAME,"fdsa4","email@email.com");
 
         //WHEN
         underTest.save(user);
@@ -27,6 +27,24 @@ public class TestUserRepository {
 
         //THEN
         assertThat(foundUser.getUsername()).isEqualTo(EXPECTED_USERNAME);
+    }
+
+    //TODO: need to handle the org.hibernate.exception.ConstraintViolationException (duplicate username)
+    @Test
+    public void saveUserWithDuplicateUsername(){
+        //GIVEN
+        String EXPECTED_USERNAME = "BOB";
+        User user = new User(EXPECTED_USERNAME,"fdsa4","email@email.com");
+        User user2 = new User(EXPECTED_USERNAME,"fdsa4","email@email.com");
+
+        //WHEN
+        underTest.save(user);
+        underTest.save(user2);
+        User foundUser = underTest.findByUsername(EXPECTED_USERNAME).get();
+
+        //THEN
+        assertThat(foundUser.getUsername()).isEqualTo(EXPECTED_USERNAME);
+
     }
 
 
