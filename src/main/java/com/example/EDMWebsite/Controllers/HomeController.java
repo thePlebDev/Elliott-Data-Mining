@@ -1,13 +1,18 @@
 package com.example.EDMWebsite.Controllers;
 
+import com.example.EDMWebsite.Models.User;
+import com.example.EDMWebsite.Services.UserService;
 import com.stripe.Stripe;
 import com.stripe.param.PaymentIntentCreateParams;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class HomeController {
+
 
     @GetMapping("/")
     public String home(){
@@ -28,8 +33,16 @@ public class HomeController {
         return "checkout";
     }
 
-    @PostMapping("/signup")
-    public String signup(){
+    @GetMapping("/profile")
+    public String profile(){
+        return "profile";
+    }
+
+    @GetMapping("/signup")
+    public String signupGet(Model model){
+        model.addAttribute("users",new User());
         return "signup";
     }
+
+
 }

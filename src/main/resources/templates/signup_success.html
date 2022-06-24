@@ -31,25 +31,7 @@
 
 </header>
 <div class="signup-container">
-    <form th:action="@{/signup}" method="post" class="signup-form" th:object="${users}">
-        <h1>Sign up and contribute!</h1>
-        <div class="form-example">
-            <label for="username">Username: </label>
-            <input type="text" th:field="*{username}" name="username" id="username" required>
-        </div>
-        <div class="form-example">
-            <label for="email">Email: </label>
-            <input type="email" name="email" th:field="*{email}" id="email" required>
-        </div>
-        <div class="form-example">
-            <label for="password">Password: </label>
-            <input type="password" name="password" th:field="*{password}" id="password" required>
-        </div>
-        <div class="form-example">
-            <input type="submit" value="Sign up!">
-        </div>
-    </form>
-
+    <h1>SIGN_UP WAS A SUCCESS!!!</h1>
 </div>
 
 

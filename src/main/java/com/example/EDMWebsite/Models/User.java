@@ -20,6 +20,9 @@ public class User {
     @Column
     private String password;
 
+    @Column
+    private String email;
+
     @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
     private List<Authority> authorities = new ArrayList<>();
 
@@ -30,9 +33,10 @@ public class User {
     }
 
 
-    public User(String username, String password){
+    public User(String username, String password,String email){
         this.username = username;
         this.password = password;
+        this.email = email;
     }
 
     //GETTERS
@@ -46,6 +50,9 @@ public class User {
     public Long getId(){
         return this.id;
     }
+    public String getEmail(){
+        return this.email;
+    }
 
     //SETTERS
     public void setUsername(String username){
@@ -55,4 +62,7 @@ public class User {
         this.password = password;
     }
     public void setAuthorities(Authority authorities){this.authorities.add(authorities);}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
