@@ -1,11 +1,11 @@
 .mobile-menu{
     position:absolute;
-    right:-250px;
-    z-index:9;
+    z-index:99999999;
     background-color:white;
     width:200px;
     height:89.3vh;
-    
+    right:0;
+
 }
 .burgerMenuOpen{
     border-radius:8px;
@@ -75,7 +75,10 @@
 .mobile-menu{
     display:none;
 }
-.burgerMenu{
+.burgerMenuOpen{
+    display:none;
+}
+.burgerMenuClose{
     display:none;
 }
 
