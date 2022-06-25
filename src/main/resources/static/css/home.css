@@ -7,26 +7,30 @@ display:flex;
 align-items:center;
 padding:10px;
 justify-content:space-between;
+margin-right:40px;
 font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
 
 }
 .linkContainer{
-   display:flex;
-   width:180px;
+   width:380px;
    justify-content:space-around;
+   display:none;
 
 }
 .headerTitle{
     display:none;
     cursor:pointer;
 }
+
 .titleSmall{
     cursor:pointer;
     display:block;
     letter-spacing:1.5px;
     font-size:30px;
+    align-self:center;
+    text-align:center;
 }
 @media only screen and (min-width: 600px) {
   .headerTitle{
@@ -76,5 +80,18 @@ width:100%;
 @media only screen and (max-width: 600px) {
   .title-subcontainer{
       width:50%;
+      flex-direction:column;
+      font-size:18px;
+      padding:5px;
+  }
+  .h3-title{
+  margin:10px 0;
+  }
+
+}
+@media only screen and (min-width: 715px) {
+  .linkContainer{
+     display:flex;
+
   }
 }
