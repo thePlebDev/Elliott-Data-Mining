@@ -4,8 +4,10 @@
     const mobileNavOpenButton = document.getElementById("burgerOpen")
     const mobileNavCloseButton = document.getElementById("burgerClose");
 
+
     mobileNavOpenButton.addEventListener("click",onNavOpenButtonClick)
     mobileNavCloseButton.addEventListener("click",onNavButtonClose)
+    window.addEventListener('resize', reportWindowSize);
 
 
 // opens the mobile menu when clicked
@@ -24,3 +26,16 @@ function onNavButtonClose(){
     mobileNavCloseButton.style.display = "none";
 
 }
+
+function reportWindowSize() {
+    
+    
+    if(window.innerWidth >= 715){
+        mobileNavContainer.style.display = "none";
+        mobileNavOpenButton.style.display = "none";
+        mobileNavCloseButton.style.display = "none";
+    }else{
+        mobileNavOpenButton.style.display = "block";
+
+    }
+  }
