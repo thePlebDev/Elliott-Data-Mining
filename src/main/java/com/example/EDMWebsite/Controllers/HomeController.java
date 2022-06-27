@@ -44,5 +44,10 @@ public class HomeController {
         return "signup";
     }
 
+    @GetMapping("products")
+    public String products(){
+        return "products";
+    }
+
 
 }
