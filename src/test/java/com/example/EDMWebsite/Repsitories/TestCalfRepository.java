@@ -34,4 +34,27 @@ public class TestCalfRepository {
 
 
     }
+
+    @Test
+    public void updateCalfTest(){
+        //GIVEN
+        String EXPECTED_TAG_NUMBER = "asdfas4";
+        String UPDATED_TAG_NUMBER = "DSAFDS";
+        Calf calf = new Calf(EXPECTED_TAG_NUMBER,"another one in the tank",444, Sex.BULL);
+
+
+        //WHEN
+        underTest.save(calf);
+        Calf returnedCalf = underTest.getReferenceById(1l);
+        returnedCalf.setTagNumber(UPDATED_TAG_NUMBER);
+        underTest.save(returnedCalf);
+        Calf updatedCalf = underTest.getReferenceById(1l);
+
+
+        //THEN
+
+        assertThat(updatedCalf.getTagNumber()).isEqualTo(UPDATED_TAG_NUMBER);
+
+
+    }
 }
