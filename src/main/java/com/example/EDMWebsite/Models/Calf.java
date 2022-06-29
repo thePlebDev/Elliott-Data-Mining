@@ -25,6 +25,11 @@ public class Calf {
     @Column
     private int weight;
 
+    @JoinColumn
+    @ManyToOne
+    private User user;
+
+
     public Calf(){}
 
     public Calf (String tagNumber,String details,int weight,Sex sex){
@@ -54,6 +59,7 @@ public class Calf {
     public Long getId(){
         return this.id;
     }
+
 
     //SETTERS
     public void setTagNumber(String tagNumber){

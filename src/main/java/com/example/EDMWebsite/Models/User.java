@@ -26,6 +26,10 @@ public class User {
     @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
     private List<Authority> authorities = new ArrayList<>();
 
+    //THIS IS THE SOURCE SIDE OF THE RELATIONSHIP
+    @OneToMany(mappedBy = "user")
+    private List<Calf> calves = new ArrayList<>();
+
     /**
      * Hibernate requires a constructor with no arguments for every persistent class
      * **/
@@ -53,6 +57,7 @@ public class User {
     public String getEmail(){
         return this.email;
     }
+    public List<Calf> getCalves(){return this.calves;}
 
     //SETTERS
     public void setUsername(String username){
@@ -62,7 +67,11 @@ public class User {
         this.password = password;
     }
     public void setAuthorities(Authority authorities){this.authorities.add(authorities);}
+    public void setCalves(Calf calf){
+        this.calves = calves;
+    }
     public void setEmail(String email) {
         this.email = email;
     }
+
 }
