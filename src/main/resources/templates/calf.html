@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Elliott Enterprise Software</title>
+    <meta name="description" content="Home page of the Rural Data Mining collective" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/signup.css" />
+    <link rel="stylesheet" href="/css/mobileNav.css" />
+    <script src="/javascript/mobileNav.js" defer></script>
+</head>
+
+<body>
+<header class="header">
+    <a href="/">
+        <h2 class="headerTitle">Elliott Enterprise Software </h2>
+    </a>
+    <a href="/">
+        <h2 class="titleSmall">ELLIOTT SOFTWARE</h2>
+    </a>
+    <div id="burgerOpen" class="burgerMenuOpen">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div id="burgerClose" class="burgerMenuClose">
+        <div class="burgerMenuCloseXOne"></div>
+        <div class="burgerMenuCloseXTwo"></div>
+    </div>
+
+    <div class="linkContainer">
+        <a href="/donate">
+            <h2>Contribute</h2>
+        </a>
+        <a href="/login">
+            <h2>Login</h2>
+        </a>
+        <a href="/about">
+            <h2>Products</h2>
+        </a>
+    </div>
+
+</header>
+<div style="position:relative">
+    <div id="mobileNavMenu" class="mobile-menu">
+        <ul class="ul-container">
+            <a href="/donate">
+                <li class="li-blocks">Contribute</li>
+            </a>
+            <a href="/login">
+                <li class="li-blocks">Login</li>
+            </a>
+            <a href="/products">
+                <li class="li-blocks">Products</li>
+            </a>
+
+        </ul>
+
+    </div>
+</div>
+<div class="signup-container">
+    <form th:action="@{/calf/add}" method="post" class="signup-form" th:object="${calf}">
+        <h1>Add Calf</h1>
+        <div class="form-example">
+            <label for="tagNumber">Tag number: </label>
+            <input type="text"  name="tagNumber" id="tagNumber" th:field="*{tagNumber}" required>
+        </div>
+        <div class="form-example">
+            <label for="details">Details: </label>
+            <input type="text" name="details"  id="details" th:field="*{details}">
+        </div>
+        <fieldset>
+            <legend>Sex:</legend>
+
+            <div>
+                <input type="radio" id="HEIFER" name="SEX" value="HEIFER" th:field="*{sex}"
+                       checked>
+                <label for="HEIFER">Heifer</label>
+            </div>
+
+            <div>
+                <input type="radio" id="BULL" name="SEX" value="BULL" th:field="*{sex}">
+                <label for="BULL">Bull</label>
+            </div>
+        </fieldset>
+        <div class="form-example">
+            <label for="weight">Weight: </label>
+            <input type="number" name="weight"  id="weight" th:field="*{weight}" required>
+        </div>
+        <div class="form-example">
+            <input type="submit" value="Add Calf!">
+        </div>
+    </form>
+
+</div>
+
+</div>
+</body>
+</html>
