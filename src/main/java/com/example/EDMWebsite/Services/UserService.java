@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -34,7 +35,9 @@ public class UserService {
     }
     public String saveCalfToUser(Calf calf, String username){
         User userFound = userRepository.findByUsername(username).get();
+        calf.setDateOfBirth(new Date());
         userFound.setCalves(calf);
+        calf.setUser(userFound);
         userRepository.save(userFound);
         return calf.getTagNumber();
     }

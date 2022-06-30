@@ -77,4 +77,7 @@ public class Calf {
     public void setSex(Sex sex){
         this.sex = sex;
     }
+    public void setUser(User user){
+        this.user = user;
+    }
 }

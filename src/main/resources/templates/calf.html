@@ -62,7 +62,7 @@
 </div>
 <div class="signup-container">
     <h1 th:text="${tagNumber}"></h1>
-    <form th:action="@{/save/calf}" method="post" class="signup-form" th:object="${calf}">
+    <form th:action="@{/calf/add}" method="post" class="signup-form" th:object="${calf}">
         <h1>Add Calf</h1>
         <div class="form-example">
             <label for="tagNumber">Tag number: </label>
