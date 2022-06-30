@@ -18,4 +18,7 @@ public interface CalfRepository extends JpaRepository<Calf , Long> {
 
     @Query(value = "SELECT * FROM calf",nativeQuery = true)
     public List<Calf> getAllCalves();
+
+    @Query(value = "SELECT * FROM calf WHERE calf.user_id = ?1",nativeQuery = true)
+    public List<Calf> getAllCalvesByUserId(Long userId);
 }
