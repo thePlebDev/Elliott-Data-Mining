@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -25,14 +28,14 @@ public class UserController {
         return "profile";
     }
 
-    @PostMapping("/save/calf")
-    public String saveCalf(Calf calf, Authentication auth, Model model){
+
+
+    @GetMapping("/calf/all")
+    public String allCalves(Model model,Authentication auth){
         String username = auth.getName();
-        String tagNumber = this.userService.saveCalfToUser(calf,username);
-        String textForUI = "Calf " + tagNumber + " added";
-        model.addAttribute("tagNumber",textForUI);
+        List<Calf> calfList = userService.getAllCalves(username);
+        model.addAttribute("calves",calfList);
 
-        return "calf";
-
+        return "calfAll";
     }
 }
