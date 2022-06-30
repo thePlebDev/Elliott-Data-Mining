@@ -27,7 +27,7 @@ public class User {
     private List<Authority> authorities = new ArrayList<>();
 
     //THIS IS THE SOURCE SIDE OF THE RELATIONSHIP
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Calf> calves = new ArrayList<>();
 
     /**
@@ -68,7 +68,7 @@ public class User {
     }
     public void setAuthorities(Authority authorities){this.authorities.add(authorities);}
     public void setCalves(Calf calf){
-        this.calves = calves;
+        this.calves.add(calf);
     }
     public void setEmail(String email) {
         this.email = email;

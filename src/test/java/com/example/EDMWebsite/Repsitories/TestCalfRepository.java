@@ -5,9 +5,13 @@ import com.example.EDMWebsite.Models.Sex;
 
 
 import com.example.EDMWebsite.Repositories.CalfRepository;
+import com.example.EDMWebsite.Repositories.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
+import java.util.List;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DataJpaTest
@@ -25,11 +29,10 @@ public class TestCalfRepository {
 
         //WHEN
         underTest.save(calf);
-       Calf returnedCalf = underTest.getCalfByTagNumber(EXPECTED_TAG_NUMBER).get();
+        Calf returnedCalf = underTest.getCalfByTagNumber(EXPECTED_TAG_NUMBER).get();
 
 
         //THEN
-
         assertThat(returnedCalf.getSex()).isEqualTo(Sex.BULL);
 
 
@@ -55,6 +58,6 @@ public class TestCalfRepository {
 
         assertThat(updatedCalf.getTagNumber()).isEqualTo(UPDATED_TAG_NUMBER);
 
-
     }
+
 }

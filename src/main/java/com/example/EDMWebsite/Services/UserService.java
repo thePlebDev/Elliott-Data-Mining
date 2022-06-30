@@ -1,10 +1,13 @@
 package com.example.EDMWebsite.Services;
 
+import com.example.EDMWebsite.Models.Calf;
 import com.example.EDMWebsite.Models.User;
 import com.example.EDMWebsite.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -23,4 +26,9 @@ public class UserService {
         user.setPassword(encodedPassword);
         return this.userRepository.save(user);
     }
+
+//    public List<Calf> getAllCalves(String username){
+//        User
+//
+//    }
 }
