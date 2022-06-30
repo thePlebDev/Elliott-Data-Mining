@@ -52,7 +52,7 @@ public class TestUserRepository {
 
     }
 
-    @Test
+    @Test//TO GET ALL CALVES RELATED TO THE USER
     public void gettingAllCalvesToUsers(){
         //GIVEN
         String EXPECTED_USERNAME = "BOB";
