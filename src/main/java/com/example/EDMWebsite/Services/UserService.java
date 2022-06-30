@@ -27,8 +27,15 @@ public class UserService {
         return this.userRepository.save(user);
     }
 
-//    public List<Calf> getAllCalves(String username){
-//        User
-//
-//    }
+    public List<Calf> getAllCalves(String username){
+        User user = userRepository.findByUsername(username).get();
+        return user.getCalves();
+
+    }
+    public String saveCalfToUser(Calf calf, String username){
+        User userFound = userRepository.findByUsername(username).get();
+        userFound.setCalves(calf);
+        userRepository.save(userFound);
+        return calf.getTagNumber();
+    }
 }

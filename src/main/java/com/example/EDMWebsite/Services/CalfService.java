@@ -1,7 +1,9 @@
 package com.example.EDMWebsite.Services;
 
 import com.example.EDMWebsite.Models.Calf;
+import com.example.EDMWebsite.Models.User;
 import com.example.EDMWebsite.Repositories.CalfRepository;
+import com.example.EDMWebsite.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +15,13 @@ public class CalfService {
 
     CalfRepository calfRepository;
 
+    UserRepository userRepository;
+
     @Autowired
-    public CalfService(CalfRepository calfRepository){
+    public CalfService(CalfRepository calfRepository, UserRepository userRepository){
         this.calfRepository = calfRepository;
+        this.userRepository = userRepository;
+
     }
 
 
@@ -23,9 +29,11 @@ public class CalfService {
         return this.calfRepository.findAll();
     }
 
-    public Calf save(Calf calf){
-        return this.calfRepository.save(calf);
-    }
+//    public Calf save(Calf calf,String username){
+//        User user= userRepository.findByUsername(username).get();
+//        user.setCalves(calf);
+//        return this.calfRepository.save(calf);
+//    }
 
     public Calf updateCalf(Calf calf){
         Calf returnedCalf = this.calfRepository.getReferenceById(calf.getId());

@@ -35,8 +35,9 @@ public class ProjectConfig{
           http.formLogin();
           http.authorizeRequests()
                           .mvcMatchers("/profile").authenticated()
+                          .mvcMatchers("/calf").authenticated()
                           .anyRequest().permitAll();
-        http.csrf(c-> c.ignoringAntMatchers("/signup","/calf/add"));
+        http.csrf(c-> c.ignoringAntMatchers("/signup"));
         http.authenticationProvider( authenticationProvider());
 
 

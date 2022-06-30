@@ -18,13 +18,13 @@ public class CalfControllerRest {
         this.calfService = calfService;
     }
 
-    @PostMapping
-    public Calf saveCalf(Calf calf){
-        System.out.println("THIS IS THE CALF BELOW");
-        System.out.println(calf.getTagNumber());
-        System.out.println(calf.getSex());
-        System.out.println(calf.getDetails());
-        System.out.println(calf.getWeight());
-        return this.calfService.save(calf);
-    }
+//    @PostMapping
+//    public Calf saveCalf(Calf calf){
+//        System.out.println("THIS IS THE CALF BELOW");
+//        System.out.println(calf.getTagNumber());
+//        System.out.println(calf.getSex());
+//        System.out.println(calf.getDetails());
+//        System.out.println(calf.getWeight());
+//        return this.calfService.save(calf);
+//    }
 }
