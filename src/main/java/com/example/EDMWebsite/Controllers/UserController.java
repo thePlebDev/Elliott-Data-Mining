@@ -32,9 +32,14 @@ public class UserController {
 
     @GetMapping("/calf/all")
     public String allCalves(Model model,Authentication auth){
-        String username = auth.getName();
-        List<Calf> calfList = userService.getAllCalves(username);
-        model.addAttribute("calves",calfList);
+//        String username = auth.getName();
+//        List<Calf> calfList = userService.getAllCalves(username);
+//        model.addAttribute("calves",calfList);
+//        <h1 th:if="${calves.empty}"> No Calves</h1>
+//<div th:each="calf : ${calves}" class="calf-container">
+//    <h1 th:text="${calf.tagNumber}"></h1>
+//
+//</div>
 
         return "calfAll";
     }

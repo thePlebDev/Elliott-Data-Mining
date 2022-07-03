@@ -61,38 +61,51 @@
     </div>
 </div>
 <div class="signup-container">
-    <h1 th:text="${tagNumber}"></h1>
+    <div th:if="${tagNumber}" class="calf-added-message">
+        <h1 th:text="${tagNumber}"></h1>
+    </div>
+
     <form th:action="@{/calf/add}" method="post" class="signup-form" th:object="${calf}">
         <h1>Add Calf</h1>
-        <div class="form-example">
-            <label for="tagNumber">Tag number: </label>
-            <input type="text"  name="tagNumber" id="tagNumber" th:field="*{tagNumber}" required>
+        <div class="signup-item">
+            <label for="tagNumber"> </label>
+            <input type="text"  class="signup-input" name="tagNumber" placeholder="Tag Number" id="tagNumber" th:field="*{tagNumber}" required>
         </div>
-        <div class="form-example">
-            <label for="details">Details: </label>
-            <input type="text" name="details"  id="details" th:field="*{details}">
+        <div class="signup-item">
+            <label for="details"> </label>
+            <input type="text" class="signup-input" name="details" placeholder="Details"  id="details" th:field="*{details}">
         </div>
-        <fieldset>
-            <legend>Sex:</legend>
-
-            <div>
-                <input type="radio" id="HEIFER" name="SEX" value="HEIFER" th:field="*{sex}"
-                       checked>
-                <label for="HEIFER">Heifer</label>
+        <div class="signup-item-weight">
+            <div class="weight-label">
+                <label for="weight">Weight: </label>
             </div>
-
-            <div>
-                <input type="radio" id="BULL" name="SEX" value="BULL" th:field="*{sex}">
-                <label for="BULL">Bull</label>
+            <input type="number" class="signup-input-weight" placeholder="Birth Weight" name="weight"  id="weight" th:field="*{weight}" required>
+        </div>
+        <div class="signup-item-select">
+            <div class="select-label">
+                <label for="sex">Calf Sex: </label>
             </div>
-        </fieldset>
-        <div class="form-example">
-            <label for="weight">Weight: </label>
-            <input type="number" name="weight"  id="weight" th:field="*{weight}" required>
+            <select id="sex" class="signup-input-select" th:field="*{sex}">
+                <option value="HEIFER" >Heifer</option>
+                <option value="BULL" >Bull</option>
+
+            </select>
+        </div>
+        <div class="signup-item-select">
+            <div class="select-label">
+                <label for="status">Calf Status: </label>
+            </div>
+            <select id="status" class="signup-input-select" th:field="*{status}">
+                <option value="ALIVE">Alive</option>
+                <option value="DEAD">Dead</option>
+                <option value="SOLD">Sold</option>
+
+            </select>
         </div>
         <div class="form-example">
-            <input type="submit" value="Add Calf!">
+            <input type="submit" class="signup-button" value="Add Calf!">
         </div>
+
     </form>
 
 </div>

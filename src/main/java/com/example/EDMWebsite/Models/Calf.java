@@ -1,5 +1,8 @@
 package com.example.EDMWebsite.Models;
 
+import com.example.EDMWebsite.Models.EnumModels.CalfStatus;
+import com.example.EDMWebsite.Models.EnumModels.Sex;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -22,6 +25,11 @@ public class Calf {
     @Column
     @Enumerated(EnumType.STRING)
     private Sex sex;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private CalfStatus status;
+
     @Column
     private int weight;
 
@@ -32,11 +40,12 @@ public class Calf {
 
     public Calf(){}
 
-    public Calf (String tagNumber,String details,int weight,Sex sex){
+    public Calf (String tagNumber,String details,int weight,Sex sex,CalfStatus status){
         this.tagNumber = tagNumber;
         this.details = details;
         this.weight = weight;
         this.sex = sex;
+        this.status = status;
         this.dateOfBirth = new Date();
     }
 
@@ -59,6 +68,7 @@ public class Calf {
     public Long getId(){
         return this.id;
     }
+    public CalfStatus getStatus(){return this.status;}
 
 
     //SETTERS
@@ -80,4 +90,5 @@ public class Calf {
     public void setUser(User user){
         this.user = user;
     }
+    public void setStatus(CalfStatus calfStatus){this.status = calfStatus;}
 }
