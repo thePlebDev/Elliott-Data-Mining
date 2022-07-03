@@ -63,21 +63,21 @@
 </div>
 <div class="signup-container">
     <form th:action="@{/signup}" method="post" class="signup-form" th:object="${users}">
-        <h1>Sign up and contribute!</h1>
-        <div class="form-example">
-            <label for="username">Username: </label>
-            <input type="text" th:field="*{username}" name="username" id="username" required>
+        <h1>Sign up!</h1>
+        <div class="signup-item">
+            <label for="username"> </label>
+            <input type="text" class="signup-input" th:field="*{username}" name="username" id="username" required placeholder="Username">
         </div>
-        <div class="form-example">
-            <label for="email">Email: </label>
-            <input type="email" name="email" th:field="*{email}" id="email" required>
+        <div class="signup-item">
+            <label for="email"> </label>
+            <input type="email" class="signup-input" name="email" th:field="*{email}" id="email" required placeholder="Email">
         </div>
-        <div class="form-example">
-            <label for="password">Password: </label>
-            <input type="password" name="password" th:field="*{password}" id="password" required>
+        <div class="signup-item">
+            <label for="password"> </label>
+            <input type="password" class="signup-input"  name="password" th:field="*{password}" id="password" required placeholder="Password">
         </div>
-        <div class="form-example">
-            <input type="submit" value="Sign up!">
+        <div>
+            <input class="signup-button" type="submit" value="Sign up!">
         </div>
     </form>
 

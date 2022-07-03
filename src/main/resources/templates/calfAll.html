@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/home.css" />
     <link rel="stylesheet" href="/css/signup.css" />
     <link rel="stylesheet" href="/css/mobileNav.css" />
+    <link rel="stylesheet" href="/css/calfAll.css" />
     <script src="/javascript/mobileNav.js" defer></script>
 </head>
 
@@ -60,9 +61,33 @@
 
     </div>
 </div>
-<h1 th:if="${calves.empty}"> No Calves</h1>
-<div th:each="calf : ${calves}">
-    <h1 th:text="${calf.tagNumber}"></h1>
+<div class="calf-search-bar">
+    <h1>SEARCH BAR HERE</h1>
+</div>
+<div class="calf-container">
+    <div class="calf-item-container">
+        <div class="calf-item">DEAD</div>
+
+        <div class="padding-line"></div>
+        <div><span class="text-styling">Tag:</span> 33fr</div>
+        <div><span class="text-styling">CCIA:</span> fdk88r7dJU7</div>
+
+        <div class="padding-line"></div>
+        <div>Looks like he could be a little sick. Remember to check up on him</div>
+        <div class="padding-line"></div>
+
+        <div><span class="text-styling">Date of Birth:</span> 02/02/22</div>
+        <div><span class="text-styling">Sex:</span> BULL</div>
+        <div><span class="text-styling">Birth Weight:</span> 98lbs</div>
+
+        <div class="padding-line"></div>
+        <div class="button-container">
+            <button class="edit-button">EDIT</button>
+            <button class="delete-button">DELETE</button>
+        </div>
+    </div>
+
+
 
 </div>
 
