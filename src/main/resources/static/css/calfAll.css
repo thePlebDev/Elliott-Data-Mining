@@ -64,3 +64,26 @@
     justify-content:center;
 
 }
+.no-calves-text{
+
+    text-align:center;
+    font-size:35px;
+    margin-top:20px;
+    color:#24408f;
+    letter-spacing:1.5px;
+    font-weight:700;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+              -webkit-font-smoothing: antialiased;
+
+}
+.add-calf{
+    color:white;
+
+}
+
+.add-calf-button{
+    width:200px;
+    margin: 10px auto;
+    font-size:25px;
+
+}

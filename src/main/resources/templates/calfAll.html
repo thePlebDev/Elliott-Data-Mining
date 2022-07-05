@@ -64,21 +64,28 @@
 <div class="calf-search-bar">
     <h1>SEARCH BAR HERE</h1>
 </div>
+<div th:if="${calves.empty}" class="no-calves-text"> No Calves</div>
+<a href="/calf/add" class="add-calf">
+    <button class="add-calf-button">
+        Add Calf!
+    </button>
+</a>
 <div class="calf-container">
-    <div class="calf-item-container">
-        <div class="calf-item">DEAD</div>
+
+    <div th:each="calf : ${calves}" class="calf-item-container">
+        <div class="calf-item" th:text="${calf.status}"></div>
 
         <div class="padding-line"></div>
-        <div><span class="text-styling">Tag:</span> 33fr</div>
-        <div><span class="text-styling">CCIA:</span> fdk88r7dJU7</div>
+        <div><span class="text-styling">Tag:</span> <span th:text="${calf.tagNumber}"></span></div>
+        <div ><span class="text-styling" >CCIA:</span> <span th:text="${calf.cciaNumber}"></span></div>
 
         <div class="padding-line"></div>
-        <div>Looks like he could be a little sick. Remember to check up on him</div>
+        <div th:text="${calf.details}"></div>
         <div class="padding-line"></div>
 
-        <div><span class="text-styling">Date of Birth:</span> 02/02/22</div>
-        <div><span class="text-styling">Sex:</span> BULL</div>
-        <div><span class="text-styling">Birth Weight:</span> 98lbs</div>
+        <div><span class="text-styling">Date of Birth:</span> <span th:text="${calf.dateOfBirth}"></span></div>
+        <div><span class="text-styling" >Sex:</span> <span th:text="${calf.sex}">No sex on record</span></div>
+        <div><span class="text-styling">Birth Weight:</span><span th:text="${calf.weight}">No weight on record</span> </div>
 
         <div class="padding-line"></div>
         <div class="button-container">
