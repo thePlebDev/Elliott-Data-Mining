@@ -64,6 +64,12 @@
     <div th:if="${tagNumber}" class="calf-added-message">
         <h1 th:text="${tagNumber}"></h1>
     </div>
+    <a href="/calf/all">
+        <div class="show-all-calves">
+            <h1>See all calves</h1>
+        </div>
+    </a>
+
 
     <form th:action="@{/calf/add}" method="post" class="signup-form" th:object="${calf}">
         <h1>Add Calf</h1>

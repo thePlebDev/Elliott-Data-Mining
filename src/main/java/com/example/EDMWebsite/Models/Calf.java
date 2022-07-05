@@ -18,6 +18,9 @@ public class Calf {
     @Column
     private String details;
 
+    @Column
+    private String cciaNumber;
+
     @Column(name = "date_of_birth")
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
@@ -48,6 +51,15 @@ public class Calf {
         this.status = status;
         this.dateOfBirth = new Date();
     }
+    public Calf (String tagNumber,String details,int weight,Sex sex,CalfStatus status,String cciaNumber){
+        this.tagNumber = tagNumber;
+        this.details = details;
+        this.weight = weight;
+        this.sex = sex;
+        this.status = status;
+        this.dateOfBirth = new Date();
+        this.cciaNumber = cciaNumber;
+    }
 
     //GETTERS
     public String getTagNumber(){
@@ -69,6 +81,7 @@ public class Calf {
         return this.id;
     }
     public CalfStatus getStatus(){return this.status;}
+    public String getCciaNumber(){return this.cciaNumber;}
 
 
     //SETTERS
@@ -91,4 +104,5 @@ public class Calf {
         this.user = user;
     }
     public void setStatus(CalfStatus calfStatus){this.status = calfStatus;}
+    public void setCciaNumber(String cciaNumber){this.cciaNumber = cciaNumber;}
 }
