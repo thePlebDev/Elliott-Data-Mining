@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -33,7 +34,6 @@ public class CalfController {
     public String addingCalf(Model model){
         Calf calf = new Calf();
         model.addAttribute("calf",calf);
-        System.out.println("CALF/ADD CONTROLLER");
         return "calf";
     }
 
@@ -47,6 +47,30 @@ public class CalfController {
 
         return "redirect:/calf/add";
 
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editCalf(Model model, @PathVariable Long id){
+
+       Calf foundCalf = this.calfService.getCalfById(id);
+
+        model.addAttribute("calf",foundCalf);
+
+        return "editCalf";
+    }
+
+    @PostMapping("/edit")
+    public String updateCalf(Calf calf,RedirectAttributes model){
+
+
+        String tagNumber = this.calfService.updateCalf(calf).getTagNumber();
+
+        String textForUI = "Calf " + tagNumber + " updated";
+        model.addFlashAttribute("tagNumber",textForUI);
+
+
+
+        return "redirect:/calf/all";
     }
 
 }
