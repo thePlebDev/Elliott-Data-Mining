@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.util.List;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DataJpaTest
@@ -55,6 +57,24 @@ public class TestCalfRepository {
         //THEN
 
         assertThat(updatedCalf.getTagNumber()).isEqualTo(UPDATED_TAG_NUMBER);
+
+    }
+
+    @Test
+    public void deleteCalfByIdTest(){
+
+        //GIVEN
+        String EXPECTED_TAG_NUMBER = "asdfas4";
+        Calf calf = new Calf(EXPECTED_TAG_NUMBER,"another one in the tank",444, Sex.BULL, CalfStatus.ALIVE);
+
+
+        //WHEN
+        underTest.save(calf);
+        int deletedCalf = underTest.deleteCalfById(1l);
+        List<Calf> calfList = underTest.getAllCalves();
+
+        //THEN
+        assertThat(deletedCalf).isEqualTo(1);
 
     }
 

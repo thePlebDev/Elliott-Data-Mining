@@ -1,7 +1,12 @@
 package com.example.EDMWebsite.Repsitories;
 
+import com.example.EDMWebsite.Models.Calf;
+import com.example.EDMWebsite.Models.EnumModels.CalfStatus;
+import com.example.EDMWebsite.Models.EnumModels.Sex;
+import com.example.EDMWebsite.Models.User;
 import com.example.EDMWebsite.Repositories.CalfRepository;
 import com.example.EDMWebsite.Repositories.UserRepository;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
@@ -15,6 +20,8 @@ public class TestCalfUserRepository {
 
     @Autowired
     UserRepository userUnderTest;
+
+
 
 
 }
