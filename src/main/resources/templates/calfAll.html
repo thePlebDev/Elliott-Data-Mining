@@ -95,7 +95,10 @@
             <a th:href="@{'/calf/edit/' + ${calf.id}} ">
                 <button class="edit-button">EDIT</button>
             </a>
-            <button class="delete-button">DELETE</button>
+            <a th:href="@{'/calf/delete/' + ${calf.id}}">
+                <button class="delete-button">DELETE</button>
+            </a>
+
         </div>
     </div>
 

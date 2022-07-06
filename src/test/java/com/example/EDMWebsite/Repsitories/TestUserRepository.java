@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -73,6 +74,44 @@ public class TestUserRepository {
         //THEN
         assertThat(calfList.size()).isEqualTo(2);
     }
+
+    @Test
+    public void deleteByUserIdAndCalfId(){
+        //GIVEN
+        String EXPECTED_USERNAME = "BOB";
+        Long EXPECTED_CALF_ID = 1l;
+
+        User user = new User(EXPECTED_USERNAME,"fdsa4","email@email.com");
+        Calf calf = new Calf("bob234","another one in the tank",444, Sex.BULL, CalfStatus.ALIVE);
+        Calf calf2 = new Calf("fdsa84","another one in the tank",444, Sex.BULL, CalfStatus.ALIVE);
+
+
+        //WHEN
+        user.setCalves(calf);
+        user.setCalves(calf2);
+        underTest.save(user);
+
+        User foundUser = underTest.findByUsername(EXPECTED_USERNAME).get();
+        List<Calf> calfList =foundUser.getCalves();
+        calfList.stream()
+                        .forEach( calfItem ->{
+                            if(calfItem.getId() == EXPECTED_CALF_ID){
+                                calfList.remove(calfItem);
+                            }
+                        });
+
+        underTest.save(foundUser);
+        User updatedFoundUser = underTest.findByUsername(EXPECTED_USERNAME).get();
+
+        //THEN
+        assertThat(updatedFoundUser.getCalves().size()).isEqualTo(1);
+
+
+    }
+
+
+
+
 
 
 }
