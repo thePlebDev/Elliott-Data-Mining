@@ -51,6 +51,7 @@ public class Calf {
         this.status = status;
         this.dateOfBirth = new Date();
     }
+
     public Calf (String tagNumber,String details,int weight,Sex sex,CalfStatus status,String cciaNumber){
         this.tagNumber = tagNumber;
         this.details = details;
@@ -105,4 +106,7 @@ public class Calf {
     }
     public void setStatus(CalfStatus calfStatus){this.status = calfStatus;}
     public void setCciaNumber(String cciaNumber){this.cciaNumber = cciaNumber;}
+
+    /**THIS IS NEEDED FOR THE FORMS*/
+    public void setId(Long id){this.id = id;}
 }

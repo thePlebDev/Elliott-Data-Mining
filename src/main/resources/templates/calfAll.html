@@ -65,6 +65,9 @@
     <h1>SEARCH BAR HERE</h1>
 </div>
 <div th:if="${calves.empty}" class="no-calves-text"> No Calves</div>
+<div th:if="${tagNumber}" class="calf-added-message">
+    <h1 th:text="${tagNumber}"></h1>
+</div>
 <a href="/calf/add" class="add-calf">
     <button class="add-calf-button">
         Add Calf!
@@ -89,7 +92,9 @@
 
         <div class="padding-line"></div>
         <div class="button-container">
-            <button class="edit-button">EDIT</button>
+            <a th:href="@{'/calf/edit/' + ${calf.id}} ">
+                <button class="edit-button">EDIT</button>
+            </a>
             <button class="delete-button">DELETE</button>
         </div>
     </div>

@@ -5,6 +5,7 @@ import com.example.EDMWebsite.Models.User;
 import com.example.EDMWebsite.Repositories.CalfRepository;
 import com.example.EDMWebsite.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -51,6 +52,10 @@ public class CalfService {
         this.calfRepository.delete(calf);
         return calf.getTagNumber();
 
+    }
+    public Calf getCalfById(Long id){
+        Calf foundCalf = this.calfRepository.findById(id).orElseThrow(()-> new BadCredentialsException("Improper ID"));
+        return foundCalf;
     }
 
 }
