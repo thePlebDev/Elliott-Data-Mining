@@ -73,14 +73,5 @@ public class CalfController {
         return "redirect:/calf/all";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteCalf(RedirectAttributes model, @PathVariable Long id){
-        //this.calfService.deleteCalf()
-        Calf foundCalf = this.calfService.getCalfById(id);
-
-        model.addAttribute("calf",foundCalf);
-
-        return "redirect:/calf/all";
-    }
 
 }

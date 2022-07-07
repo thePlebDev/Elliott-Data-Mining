@@ -23,7 +23,7 @@ public class User {
     @Column
     private String email;
 
-    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER,orphanRemoval = true,cascade = CascadeType.ALL)
     private List<Authority> authorities = new ArrayList<>();
 
     //THIS IS THE SOURCE SIDE OF THE RELATIONSHIP
@@ -72,6 +72,14 @@ public class User {
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+
+
+
+    //UTILITY
+    public void removeCalf(Calf calf){
+        this.calves.remove(calf);
+        calf.setUser(null);
     }
 
 }
