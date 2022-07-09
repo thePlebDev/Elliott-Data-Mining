@@ -1,5 +1,6 @@
 package com.example.EDMWebsite.Controllers;
 
+import com.example.EDMWebsite.Exceptions.UsernameAlreadyExistsException;
 import com.example.EDMWebsite.Models.Calf;
 import com.example.EDMWebsite.Models.User;
 import com.example.EDMWebsite.Services.UserService;
@@ -22,6 +23,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @ExceptionHandler({UsernameAlreadyExistsException.class})
+    public String usernameAlreadyExistsError(Exception exception,RedirectAttributes model){
+        model.addFlashAttribute("usernameError","Username unavailable");
+
+        return "redirect:/signup";
+
+    }
+
     //todo:if sign up fails, we just send it back to sign up and give it extra error data
     @PostMapping("/signup")
     public String signup(User user, Authentication auth){
@@ -32,18 +41,12 @@ public class UserController {
         return "profile";
     }
 
-    @ExceptionHandler({PSQLException.class})
-    public String databaseError(PSQLException exception){
-        System.out.println("------------------ERROR MESSAGE BELOW---------------------");
-        System.out.println("------------------ERROR MESSAGE BELOW---------------------");
-        System.out.println(exception.getServerErrorMessage());
-        System.out.println(exception.getMessage());
-        System.out.println(exception.getCause());
-        System.out.println("------------------ERROR MESSAGE ABOVE---------------------");
-        System.out.println("------------------ERROR MESSAGE ABOVE---------------------");
-        return "databaseError";
-
+    @GetMapping("/signup")
+    public String signupGet(Model model){
+        model.addAttribute("users",new User());
+        return "signup";
     }
+
 
     @GetMapping("/calf/all")
     public String allCalves(Model model,Authentication auth){

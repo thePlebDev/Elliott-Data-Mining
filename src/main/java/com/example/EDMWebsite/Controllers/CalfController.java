@@ -27,7 +27,7 @@ public class CalfController {
         this.userService = userService;
     }
 
-    @ExceptionHandler
+
     @GetMapping("/add")
     public String addingCalf(Model model){
         Calf calf = new Calf();
