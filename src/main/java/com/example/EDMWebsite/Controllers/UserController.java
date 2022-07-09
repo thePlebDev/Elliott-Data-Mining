@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.postgresql.util.PSQLException;
 
 import java.util.List;
 
@@ -30,7 +32,18 @@ public class UserController {
         return "profile";
     }
 
+    @ExceptionHandler({PSQLException.class})
+    public String databaseError(PSQLException exception){
+        System.out.println("------------------ERROR MESSAGE BELOW---------------------");
+        System.out.println("------------------ERROR MESSAGE BELOW---------------------");
+        System.out.println(exception.getServerErrorMessage());
+        System.out.println(exception.getMessage());
+        System.out.println(exception.getCause());
+        System.out.println("------------------ERROR MESSAGE ABOVE---------------------");
+        System.out.println("------------------ERROR MESSAGE ABOVE---------------------");
+        return "databaseError";
 
+    }
 
     @GetMapping("/calf/all")
     public String allCalves(Model model,Authentication auth){
