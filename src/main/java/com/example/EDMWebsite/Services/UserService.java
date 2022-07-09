@@ -1,11 +1,13 @@
 package com.example.EDMWebsite.Services;
 
+import com.example.EDMWebsite.Exceptions.UsernameAlreadyExistsException;
 import com.example.EDMWebsite.Models.Calf;
 import com.example.EDMWebsite.Models.User;
 import com.example.EDMWebsite.Repositories.CalfRepository;
 import com.example.EDMWebsite.Repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -27,9 +29,16 @@ public class UserService {
     }
 
     public User saveUser(User user){
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-        return this.userRepository.save(user);
+
+            boolean exists = usernameAlreadyExist(user.getUsername());
+            if(exists){
+                throw new UsernameAlreadyExistsException("THE USERNAME ALREADY EXISTS");
+            }
+
+            String encodedPassword = passwordEncoder.encode(user.getPassword());
+            user.setPassword(encodedPassword);
+            return this.userRepository.save(user);
+
     }
 
     public List<Calf> getAllCalves(String username){
@@ -61,6 +70,11 @@ public class UserService {
 
 
         return "THIS NEEDS TO BE UPDATED";
+    }
+
+    private boolean usernameAlreadyExist(String username){
+        return this.userRepository.findByUsername(username).isPresent();
+
     }
 
 

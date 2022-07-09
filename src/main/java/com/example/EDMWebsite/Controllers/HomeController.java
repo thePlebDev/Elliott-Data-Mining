@@ -43,11 +43,6 @@ public class HomeController {
         return "profile";
     }
 
-    @GetMapping("/signup")
-    public String signupGet(Model model){
-        model.addAttribute("users",new User());
-        return "signup";
-    }
 
     @GetMapping("products")
     public String products(){
