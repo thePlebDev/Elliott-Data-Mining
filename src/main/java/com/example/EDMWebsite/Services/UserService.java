@@ -30,10 +30,16 @@ public class UserService {
 
     public User saveUser(User user){
 
-            boolean exists = usernameAlreadyExist(user.getUsername());
-            if(exists){
-                throw new UsernameAlreadyExistsException("THE USERNAME ALREADY EXISTS");
+            boolean usernameExists = usernameAlreadyExist(user.getUsername());
+            boolean emailExists = emailAlreadyExists(user.getEmail());
+
+            if(usernameExists){
+                throw new UsernameAlreadyExistsException("USERNAME UNAVAILABLE");
             }
+            if(emailExists){
+                throw new UsernameAlreadyExistsException("EMAIL ALREADY EXISTS");
+            }
+
 
             String encodedPassword = passwordEncoder.encode(user.getPassword());
             user.setPassword(encodedPassword);
@@ -75,6 +81,10 @@ public class UserService {
     private boolean usernameAlreadyExist(String username){
         return this.userRepository.findByUsername(username).isPresent();
 
+    }
+
+    private boolean emailAlreadyExists(String email){
+        return this.userRepository.findByEmail(email).isPresent();
     }
 
 
