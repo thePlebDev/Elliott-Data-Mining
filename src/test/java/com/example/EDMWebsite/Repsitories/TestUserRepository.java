@@ -109,10 +109,22 @@ public class TestUserRepository {
     }
 
 
+    @Test
+    public void findByEmailTest(){
+        //GIVEN
+        String EXPECTED_EMAIL = "BOB@BOBMAIL.COM";
+        User user = new User("BOB","fdsa4",EXPECTED_EMAIL);
 
 
+        //WHEN
+        this.underTest.save(user);
+        User foundUser = this.underTest.findByEmail(EXPECTED_EMAIL).get();
 
 
+        //THEN
+        assertThat(foundUser.getEmail()).isEqualTo(EXPECTED_EMAIL);
+
+    }
 
 
 }
