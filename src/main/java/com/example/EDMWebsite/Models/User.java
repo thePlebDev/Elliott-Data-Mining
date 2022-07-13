@@ -20,14 +20,21 @@ public class User {
     private Long id;
 
 
+    @Size(min=5,max=30)
     @Column(nullable = false,length = 30)
     private String username;
 
+    @Size(min=8)
+    @NotNull
     @Column(nullable = false)
     private String password;
 
+    @NotNull
     @Column(nullable = false,length = 45)
     private String email;
+
+    @Column
+    private String customerId;
 
     @OneToMany(mappedBy = "user",fetch = FetchType.EAGER,orphanRemoval = true,cascade = CascadeType.ALL)
     private List<Authority> authorities = new ArrayList<>();
@@ -64,6 +71,7 @@ public class User {
         return this.email;
     }
     public List<Calf> getCalves(){return this.calves;}
+    public String getCustomerId(){return this.customerId;}
 
     //SETTERS
     public void setUsername(String username){
@@ -78,6 +86,9 @@ public class User {
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+    public void setCustomerId(String customerId){
+        this.customerId = customerId;
     }
 
 
