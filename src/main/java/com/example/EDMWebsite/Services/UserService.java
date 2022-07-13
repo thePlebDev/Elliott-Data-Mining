@@ -60,6 +60,7 @@ public class UserService {
         userRepository.save(userFound);
         return calf.getTagNumber();
     }
+    //TODO: #####################################  DELETE ALL CALF RELATED STUFF  ###################################
     //TODO: HANDLE ALL OPTIONAL ERROR
     //TODO: NEED TO PROTECT AGAINST RANDOM DELETIONS
     public String deleteCalfById(Long calfId, Authentication auth){
