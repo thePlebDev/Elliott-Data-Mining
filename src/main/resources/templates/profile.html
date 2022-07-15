@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8" />
   <title>Elliott Enterprise Software</title>
@@ -31,7 +31,8 @@
 
 </header>
 <div class="scrape-container">
-  <h1 class="scrape-title">PROFILE</h1>
+  <h1>WELCOME</h1>
+  <h1 class="scrape-title" th:texx="${authUser}"></h1>
 
 </div>
 

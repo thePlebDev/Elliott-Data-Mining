@@ -8,13 +8,11 @@ import com.stripe.model.Customer;
 import com.stripe.param.CustomerCreateParams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -28,6 +26,11 @@ public class SubscriptionController {
     @Autowired
     public SubscriptionController(StripeService stripeService){
         this.stripeService = stripeService;
+    }
+
+    @GetMapping("/subscribe")//todo: maybe make this authenticated??
+    public String subscribe(){
+        return "subscribe";
     }
 
 
@@ -47,11 +50,19 @@ public class SubscriptionController {
         String customerId = this.stripeService.createCustomer(user);
 
 
-        return "redirect:/subscription/pricing";
+        return "redirect:/profile";
     }
 
-    @GetMapping("/pricing")
-    public String pricing(){return "pricingPage";}
+    @GetMapping("/pricing") // I want the pricing page to redirect to the sign up
+    public String pricing(Authentication auth){
+
+        return "pricingPage";
+    }
+
+    @GetMapping("/pricing/{customerId}")
+    public String pricingCustomerId(@PathVariable String customerId){
+        return "pricing page";
+    }
 
 
 }

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Elliott Enterprise Software</title>
+    <meta name="description" content="Subscribe" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/mobileNav.css" />
+    <script src="/javascript/mobileNav.js" defer></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="/javascript/script.js" defer></script>
+
+</head>
+
+<body>
+<header class="header">
+    <a href="/">
+        <h2 class="headerTitle">Elliott Enterprise Software </h2>
+    </a>
+    <a href="/">
+        <h2 class="titleSmall">ELLIOTT SOFTWARE</h2>
+    </a>
+    <div id="burgerOpen" class="burgerMenuOpen">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div id="burgerClose" class="burgerMenuClose">
+        <div class="burgerMenuCloseXOne"></div>
+        <div class="burgerMenuCloseXTwo"></div>
+    </div>
+
+    <div class="linkContainer">
+        <a href="/donate">
+            <h2>Contribute</h2>
+        </a>
+        <a href="/login">
+            <h2>Login</h2>
+        </a>
+        <a href="/about">
+            <h2>Products</h2>
+        </a>
+    </div>
+
+</header>
+<div style="position:relative">
+    <div id="mobileNavMenu" class="mobile-menu">
+        <ul class="ul-container">
+            <a href="/donate">
+                <li class="li-blocks">Contribute</li>
+            </a>
+            <a href="/login">
+                <li class="li-blocks">Login</li>
+            </a>
+            <a href="/products">
+                <li class="li-blocks">Products</li>
+            </a>
+
+        </ul>
+
+    </div>
+</div>
+<form id="payment-form">
+    <div id="card-element">
+        <!-- Elements will create input elements here -->
+    </div>
+
+    <!-- We'll put the error messages in this element -->
+    <div id="card-element-errors" role="alert"></div>
+    <button type="submit">Subscribe</button>
+</form>
+</body>
+</html>

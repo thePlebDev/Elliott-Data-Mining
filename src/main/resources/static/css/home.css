@@ -22,6 +22,7 @@ font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 .headerTitle{
     display:none;
     cursor:pointer;
+    font-size:30px;
 }
 
 .titleSmall{
