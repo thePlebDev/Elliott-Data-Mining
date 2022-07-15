@@ -37,9 +37,10 @@ public class HomeController {
     }
 
     @GetMapping("/profile")
-    public String profile(Authentication authUser){
+    public String profile(Authentication authUser,Model model){
         System.out.println("THE NAME IS BELOW");
         System.out.println(authUser.getName());
+        model.addAttribute("authUser",authUser.getName());
         return "profile";
     }
 

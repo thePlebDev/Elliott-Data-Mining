@@ -11,15 +11,16 @@
     <link rel="stylesheet" href="/css/mobileNav.css" />
     <link rel="stylesheet" href="/css/signup.css" />
     <script src="/javascript/mobileNav.js" defer></script>
+    <script src="/javascript/forms.js" defer></script>
 </head>
 
 <body>
 <header class="header">
     <a href="/">
-        <h2 class="headerTitle">Elliott Enterprise Software </h2>
+        <h2 class="headerTitle">Java Coding Club </h2>
     </a>
     <a href="/">
-        <h2 class="titleSmall">ELLIOTT SOFTWARE</h2>
+        <h2 class="titleSmall">J-C-C</h2>
     </a>
     <div id="burgerOpen" class="burgerMenuOpen">
         <div></div>
@@ -63,7 +64,8 @@
 </div>
 <div class="signup-container">
     <h2 th:class="${usernameError}? 'signup-errors-show' : 'signup-errors-hide'" th:text="${usernameError}"></h2>
-    <form th:action="@{/subscription/landing}" method="post" class="signup-form" th:object="${user}">
+    <h2 class="landingFormLoading" id="landingLoadingText">Loading...</h2>
+    <form th:action="@{/subscription/landing}" method="post" class="signup-form" th:object="${user}" id="landingPageForm">
         <h1>Sign up!</h1>
         <h2 th:if="${#fields.hasErrors('username')}" th:errors="*{username}" name="username">Username too short</h2>
         <div class="signup-item">
@@ -74,12 +76,16 @@
             <label for="email"> </label>
             <input type="email" class="signup-input" maxlength="45" name="email" th:field="*{email}" id="email" required placeholder="Email">
         </div>
+        <div class="subscriptionType"> $<span class="moneys">5</span>/month</div>
+        <div>
+            Learn more and change this before release
+        </div>
         <div class="signup-item">
             <label for="password"> </label>
             <input type="password" class="signup-input" minlength="8"  name="password" th:field="*{password}" id="password" required placeholder="Password">
         </div>
         <div>
-            <input class="signup-button" type="submit" value="Sign up!">
+            <input class="signup-button" type="submit" value="Enter Payment!">
         </div>
     </form>
 
