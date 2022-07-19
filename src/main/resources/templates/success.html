@@ -10,9 +10,6 @@
     <link rel="stylesheet" href="/css/subscribe.css" />
     <link rel="stylesheet" href="/css/mobileNav.css" />
     <script src="/javascript/mobileNav.js" defer></script>
-    <script src="https://js.stripe.com/v3/"></script>
-    <script src="/javascript/script.js" defer></script>
-    <script src="/javascript/subscribe.js" defer></script>
 
 </head>
 
@@ -65,18 +62,8 @@
 
     </div>
 </div>
-<div class="subscribeFormContainer">
+<h1> Success</h1>
 
-    <form id="payment-form">
-        <div id="card-element">
-            <!-- Elements will create input elements here -->
-        </div>
 
-        <!-- We'll put the error messages in this element -->
-        <div id="card-element-errors" role="alert"></div>
-        <button type="submit">Subscribe</button>
-    </form>
-</div>
-<span id="ClientSecret" th:text="${clientSecret}" style="display:none"></span>
 </body>
 </html>

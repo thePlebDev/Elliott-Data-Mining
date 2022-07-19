@@ -43,6 +43,7 @@ public class StripeService {
         Authority authority = new Authority("NOTPAYED");
         authority.setUser(user);
         user.setAuthorities(authority);
+        //encoding the password
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         this.userRepository.save(user);
@@ -64,7 +65,7 @@ public class StripeService {
 
     }
 
-    private String createSubscription(String priceId,String customerId) throws StripeException {
+    public  String createSubscription(String priceId,String customerId) throws StripeException {
         Stripe.apiKey = stripeApiKey;
 
         // Automatically save the payment method to the subscription
@@ -93,8 +94,8 @@ public class StripeService {
                 .build();
 
         Subscription subscription = Subscription.create(subCreateParams);
-        System.out.println(subscription.getLatestInvoiceObject().getPaymentIntentObject().getClientSecret());
-         return"";
+        String clientSecret = subscription.getLatestInvoiceObject().getPaymentIntentObject().getClientSecret();
+         return clientSecret;
 
     }
 
