@@ -1,0 +1,8 @@
+.subscribeFormContainer{
+     width:80%;
+     margin:0 auto;
+     border:2px solid red;
+     display:flex;
+     justify-content:center;
+
+}

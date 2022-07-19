@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -28,9 +29,14 @@ public class SubscriptionController {
         this.stripeService = stripeService;
     }
 
-    @GetMapping("/subscribe")//todo: maybe make this authenticated??
-    public String subscribe(){
+    @GetMapping("/subscribe/{customerId}")//todo: CHECK THE CUSTOMER ID
+    public String subscribe(@PathVariable String customerId){
+
         return "subscribe";
+    }
+    @GetMapping("/success")
+    public String success(){
+        return "Success";
     }
 
 
@@ -41,16 +47,20 @@ public class SubscriptionController {
         return "landingPage";
     }
     @PostMapping("/landing") //THIS IS WHERE WE WANT TO CREATE THE CUSTOMER ID
-    public String getUserInfo(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) throws StripeException {
+    public String getUserInfo(@Valid @ModelAttribute("user") User user, BindingResult bindingResult, RedirectAttributes model) throws StripeException {
 
         if(bindingResult.hasErrors()){
             return "landingPage";
         }
         //authenticate the user and move on to the pricing page
         String customerId = this.stripeService.createCustomer(user);
+        //todo: ADD THE CLIENT SECRET TO THE REDIRECT MODEL
+        String clientSecret = this.stripeService.createSubscription("price_1Kh1oMIUupCxt3YbPd92xUh6",customerId);
+
+        model.addFlashAttribute("clientSecret",clientSecret);
 
 
-        return "redirect:/profile";
+        return "redirect:/subscription/subscribe/"+ customerId;
     }
 
     @GetMapping("/pricing") // I want the pricing page to redirect to the sign up
@@ -61,7 +71,7 @@ public class SubscriptionController {
 
     @GetMapping("/pricing/{customerId}")
     public String pricingCustomerId(@PathVariable String customerId){
-        return "pricing page";
+        return "pricingPage";
     }
 
 
